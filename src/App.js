@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/custom.css';
 
-import FormExample from './BootstrapForm.js';
+import Form from './BootstrapForm.js';
 import Notebook from './Notebook.js';
 
 class App extends Component {
@@ -12,10 +12,6 @@ class App extends Component {
       {
         'title': 'Day 1 - The Disaster',
         'contents': 'Today I started. And it was a disaster'
-      },
-      {
-        'title': 'Afterthought',
-        'contents': 'Yeah... But! At least I started. I feel pretty good about that one'
       }
     ]
   };
@@ -43,8 +39,8 @@ class App extends Component {
     console.log(notes);
 
     return (
-      <div className='woot'>
-        <FormExample handleSubmit={this.handleSubmit} />
+      <div className='background'>
+        <Form handleSubmit={this.handleSubmit} />
         <Notebook notes={notes} removeNote={this.removeNote} />
       </div>
     );

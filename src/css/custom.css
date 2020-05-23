@@ -8,7 +8,7 @@
 /* Form */
 .createNote {
   border-radius: 5px;
-  background-color: lightgrey;
+  background-color: rgb(240, 211, 221);
 
   padding: 30px 15px;
 }
@@ -16,11 +16,15 @@
 /* Notebook */
 .notebook {
   border-radius: 5px;
-  background-color: lightskyblue;
+  background-color: rgb(126, 202, 212);
 
   padding: 30px 15px;
 }
 
 .note {
   margin: 5px;
+}
+
+.background {
+  background-color: rgb(240, 240, 255)
 }
