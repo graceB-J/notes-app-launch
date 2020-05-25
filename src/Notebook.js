@@ -7,6 +7,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 
+import NoteSearch from './NoteSearch.js';
+
 const Notebook = props => {
   const { notes, removeNote } = props;
 
@@ -21,18 +23,26 @@ const Notebook = props => {
   );
 };
 
+handleSearch = keyword => {
+  this.setState({
+    value: keyword.target.value
+  });
+};
 
 const NotebookBody = props => {
-  const rows = props.notes.map(
+  let searchQuery = this.state.value.toLowerCase();
+  let displayedNotes = !this.state.value ? this.props.notes : this.props.notes.filter(function (item) {
+    let searchValue = item.about.toLowerCase();
+    return searchValue.indexOf(searchQuery) !== -1;
+  });
+
+  const rows = displayedNotes.map(
     (row, index) => {
       return (
         <Accordion>
           <Card className="d-flex flex-column note">
             <Card.Header as="h4" className="d-flex flex-row">
               <span className="flex-grow-1">{row.title}</span>
-              <Button onClick={() => props.starNote(index)} variant="outline-primary">
-                MARK IMPORTANT
-              </Button>
               <Accordion.Toggle as={Button} variant="outline-warning" eventKey="0">
                 EDIT
               </Accordion.Toggle>
@@ -41,7 +51,7 @@ const NotebookBody = props => {
               </Button>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>Editing Mode</Card.Body>
+              <Card.Body>Editing Mode -- IN DEVELOPMENT</Card.Body>
             </Accordion.Collapse>
             <Card.Body>
               <Card.Text>
@@ -53,7 +63,12 @@ const NotebookBody = props => {
       )
     }
   );
-  return <div>{rows}</div>;
+  return (
+    <div>
+      <NoteSearch onSearch={this.handleSearch} />
+      <div>{rows}</div>
+    </div>
+  );
 };
 
 export default Notebook;

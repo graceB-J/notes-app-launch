@@ -10,8 +10,8 @@ class App extends Component {
   state = {
     notes: [
       {
-        'title': 'Day 1 - The Disaster',
-        'contents': 'Today I started. And it was a disaster'
+        'title': 'Day 1 - Beginning to Journal',
+        'contents': 'I am going to try to write more so I remember things.'
       }
     ]
   };
