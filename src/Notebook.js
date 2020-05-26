@@ -7,10 +7,9 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 
-import NoteSearch from './NoteSearch.js';
 
 const Notebook = props => {
-  const { notes, removeNote } = props;
+  const { notes, value, removeNote } = props;
 
   return (
     <Container className="notebook">
@@ -23,17 +22,11 @@ const Notebook = props => {
   );
 };
 
-handleSearch = keyword => {
-  this.setState({
-    value: keyword.target.value
-  });
-};
 
 const NotebookBody = props => {
-  let searchQuery = this.state.value.toLowerCase();
-  let displayedNotes = !this.state.value ? this.props.notes : this.props.notes.filter(function (item) {
-    let searchValue = item.about.toLowerCase();
-    return searchValue.indexOf(searchQuery) !== -1;
+  let displayedNotes = !props.value ? props.notes : props.notes.filter(function (item) {
+    let searchValue = this.props.value.toLowerCase();
+    return (searchValue.indexOf(item.contents.toLowerCase()) != -1 || searchValue.indexOf(item.title.toLowerCase()) != -1);
   });
 
   const rows = displayedNotes.map(
@@ -64,10 +57,7 @@ const NotebookBody = props => {
     }
   );
   return (
-    <div>
-      <NoteSearch onSearch={this.handleSearch} />
-      <div>{rows}</div>
-    </div>
+    <div>{rows}</div>
   );
 };
 

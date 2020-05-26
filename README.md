@@ -18,6 +18,6 @@ Sets up any packages you might be missing for this to run successfully.
 
 ## Continuing Improvements Forthcoming
 - [x] remove unused code
-- [ ] add edit functionality
+<!-- - [ ] add edit functionality -->
 - [ ] add a search component
-- [ ] deploy to gitpages
+<!-- - [ ] deploy to gitpages -->
