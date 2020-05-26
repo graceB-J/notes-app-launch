@@ -26,7 +26,7 @@ const Notebook = props => {
 const NotebookBody = props => {
   let displayedNotes = !props.value ? props.notes : props.notes.filter(function (item) {
     let searchValue = this.props.value.toLowerCase();
-    return (searchValue.indexOf(item.contents.toLowerCase()) != -1 || searchValue.indexOf(item.title.toLowerCase()) != -1);
+    return (searchValue.indexOf(item.contents.toLowerCase()) !== -1 || searchValue.indexOf(item.title.toLowerCase()) !== -1);
   });
 
   const rows = displayedNotes.map(
